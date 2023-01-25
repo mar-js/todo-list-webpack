@@ -1,0 +1,6 @@
+export { addTodo } from './add-todo'
+export { isComplete } from './is-complete'
+export { deleteTodo } from './delete-todo'
+export { deleteAllTodo } from './delete-all-todo'
+export { addTodoInEvent } from './add-todo-in-event'
+export {getElement } from './get-elements'
