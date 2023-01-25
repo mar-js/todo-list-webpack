@@ -1,6 +1,8 @@
-import { ContainerList } from './'
+import { Container } from 'components'
 
-export const List = ({ creatred, id, task, isCompleted }) => {
+import { ITodo } from 'interfaces'
+
+export const List  = ({ id, task, isCompleted }: ITodo) => {
   const COMPONENT = `
     <li data-id="${id}" class="list-group-item d-flex align-items-center justify-content-between py-3">
       <div class="form-check m-0">
@@ -13,5 +15,5 @@ export const List = ({ creatred, id, task, isCompleted }) => {
     </li>
   `
 
-  return ContainerList.innerHTML += COMPONENT
+  return Container.innerHTML += COMPONENT
 }

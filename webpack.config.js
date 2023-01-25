@@ -1,11 +1,14 @@
+const PATH = require('path')
 const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin')
-const MINI_CSS_EXTRACT_PLUGIN = require('mini-css-extract-plugin');
 const COPY_WEBPACK_PLUGIN = require("copy-webpack-plugin");
 
 module.exports = {
+  entry: './src/index.ts',
   mode: "development",
   output: {
-    clean: true
+    clean: true,
+    filename: 'bundle.js',
+    path: PATH.resolve(__dirname, 'dist'),
   },
   watch: true,
   module: {
@@ -23,8 +26,9 @@ module.exports = {
         use: [ 'style-loader', 'css-loader']
       },
       {
-        test: /styles.css$/,
-        use: [ MINI_CSS_EXTRACT_PLUGIN.loader, 'css-loader' ]
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -32,16 +36,15 @@ module.exports = {
       }
     ]
   },
-  optimization: {},
+  resolve: {
+    extensions: ['.ts', '.js'],
+    preferRelative: true
+  },
   plugins: [
     new HTML_WEBPACK_PLUGIN({
       title: 'Todo List Webpack',
       filename: 'index.html',
       template: 'src/index.html'
-    }),
-    new MINI_CSS_EXTRACT_PLUGIN({
-      filename: '[name].css',
-      ignoreOrder: false
     }),
     new COPY_WEBPACK_PLUGIN({
       patterns: [

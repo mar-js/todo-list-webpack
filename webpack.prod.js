@@ -1,10 +1,9 @@
 const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin')
-const MINI_CSS_EXTRACT_PLUGIN = require('mini-css-extract-plugin');
 const COPY_WEBPACK_PLUGIN = require("copy-webpack-plugin");
-const CSS_MINIMIZER_WEBPACK_PLUGIN = require('css-minimizer-webpack-plugin');
 const TERSER_WEBPACK_PLUGIN = require('terser-webpack-plugin');
 
 module.exports = {
+  entry: './src/index.ts',
   mode: "production",
   output: {
     clean: true,
@@ -25,10 +24,6 @@ module.exports = {
         use: [ 'style-loader', 'css-loader']
       },
       {
-        test: /styles.css$/,
-        use: [ MINI_CSS_EXTRACT_PLUGIN.loader, 'css-loader' ]
-      },
-      {
         test: /\.(png|jpe?g|gif)$/,
         loader: 'file-loader'
       },
@@ -44,10 +39,18 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    preferRelative: true
+  },
+  devServer: {
+    static: PATH.join(__dirname, "dist"),
+    compress: true,
+    port: 4000,
+  },
   optimization: {
     minimize: true,
     minimizer: [
-      new CSS_MINIMIZER_WEBPACK_PLUGIN(),
       new TERSER_WEBPACK_PLUGIN(),
     ]
   },
@@ -56,10 +59,6 @@ module.exports = {
       title: 'Todo List Webpack',
       // filename: 'index.html',
       template: 'src/index.html'
-    }),
-    new MINI_CSS_EXTRACT_PLUGIN({
-      filename: '[name].[fullhash].css',
-      ignoreOrder: false
     }),
     new COPY_WEBPACK_PLUGIN({
       patterns: [
