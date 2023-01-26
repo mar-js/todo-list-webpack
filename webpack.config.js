@@ -1,14 +1,14 @@
-const PATH = require('path')
-const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin')
-const COPY_WEBPACK_PLUGIN = require("copy-webpack-plugin");
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 module.exports = {
   entry: './src/index.ts',
-  mode: "development",
+  mode: 'development',
   output: {
     clean: true,
     filename: 'bundle.js',
-    path: PATH.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   watch: true,
   module: {
@@ -16,19 +16,17 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader',
-        options: {
-          sources: false
-        }
+        options: { sources: false }
       },
       {
         test: /\.css$/,
         exclude: /styles.css$/,
-        use: [ 'style-loader', 'css-loader']
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -37,18 +35,21 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [ '.ts', '.js' ],
     preferRelative: true
   },
   plugins: [
-    new HTML_WEBPACK_PLUGIN({
+    new HtmlWebpackPlugin({
       title: 'Todo List Webpack',
       filename: 'index.html',
       template: 'src/index.html'
     }),
-    new COPY_WEBPACK_PLUGIN({
+    new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets/', to: 'assets/' }
+        {
+          from: 'src/assets/',
+          to: 'assets/'
+        }
       ]
     })
   ]

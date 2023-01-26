@@ -1,10 +1,11 @@
-const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin')
-const COPY_WEBPACK_PLUGIN = require("copy-webpack-plugin");
-const TERSER_WEBPACK_PLUGIN = require('terser-webpack-plugin');
+import path from 'path'
+import TerserWebpackPlugin from 'terser-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 module.exports = {
   entry: './src/index.ts',
-  mode: "production",
+  mode: 'production',
   output: {
     clean: true,
     filename: 'main.[contenthash].js'
@@ -14,14 +15,12 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader',
-        options: {
-          sources: false
-        }
+        options: { sources: false }
       },
       {
         test: /\.css$/,
         exclude: /styles.css$/,
-        use: [ 'style-loader', 'css-loader']
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -31,38 +30,37 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env']
-          }
+          loader: 'babel-loader',
+          options: { presets: [ '@babel/preset-env' ] }
         }
       }
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [ '.ts', '.js' ],
     preferRelative: true
   },
   devServer: {
-    static: PATH.join(__dirname, "dist"),
+    static: path.join(__dirname, 'dist'),
     compress: true,
-    port: 4000,
+    port: 4000
   },
   optimization: {
     minimize: true,
-    minimizer: [
-      new TERSER_WEBPACK_PLUGIN(),
-    ]
+    minimizer: [ new TerserWebpackPlugin() ]
   },
   plugins: [
-    new HTML_WEBPACK_PLUGIN({
+    new HtmlWebpackPlugin({
       title: 'Todo List Webpack',
       // filename: 'index.html',
       template: 'src/index.html'
     }),
-    new COPY_WEBPACK_PLUGIN({
+    new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets/', to: 'assets/' }
+        {
+          from: 'src/assets/',
+          to: 'assets/'
+        }
       ]
     })
   ]
