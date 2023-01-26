@@ -21,7 +21,7 @@ export interface IEvent extends ITodoList {
   e: MouseEvent | KeyboardEvent;
 }
 
-export interface IAddTodoInEvent  extends IAddTodo {
+export interface IAddTodoInEvent extends IAddTodo {
   component: HTMLElement;
 }
 

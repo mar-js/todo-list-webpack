@@ -1,8 +1,8 @@
 export class Todo {
-  created: string;
-  id: string;
-  task: string;
-  isCompleted: boolean;
+  created: string
+  id: string
+  task: string
+  isCompleted: boolean
 
   constructor(task: string) {
     this.created = new Date().toDateString()

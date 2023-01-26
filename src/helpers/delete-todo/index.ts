@@ -1,8 +1,8 @@
-import { IEvent } from "interfaces"
+import { IEvent } from 'interfaces'
 
-import { getElement } from "helpers"
+import { getElement } from 'helpers'
 
-import { Container } from "components"
+import { Container } from 'components'
 
 export const deleteTodo = ({ e, removeTodo }: IEvent) => {
   const {
@@ -18,6 +18,6 @@ export const deleteTodo = ({ e, removeTodo }: IEvent) => {
 
     removeTodo(id)
 
-    return Container.removeChild(elementLi)
+    Container.removeChild(elementLi)
   }
 }

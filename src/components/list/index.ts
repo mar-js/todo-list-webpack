@@ -2,7 +2,11 @@ import { Container } from 'components'
 
 import { ITodo } from 'interfaces'
 
-export const List  = ({ id, task, isCompleted }: ITodo) => {
+export const List = ({
+  id,
+  task,
+  isCompleted
+}: ITodo) => {
   const COMPONENT = `
     <li data-id="${id}" class="list-group-item d-flex align-items-center justify-content-between py-3">
       <div class="form-check m-0">
@@ -15,5 +19,5 @@ export const List  = ({ id, task, isCompleted }: ITodo) => {
     </li>
   `
 
-  return Container.innerHTML += COMPONENT
+  Container.innerHTML += COMPONENT
 }

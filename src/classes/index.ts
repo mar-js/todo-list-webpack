@@ -1,2 +1,2 @@
-export * from './todo'
-export * from './todo-list'
+export { Todo } from './todo'
+export { TodoList } from './todo-list'

@@ -1,6 +1,6 @@
-import { IAddTodoInEvent } from 'interfaces';
+import { IAddTodoInEvent } from 'interfaces'
 
-import {  addTodo } from 'helpers';
+import { addTodo } from 'helpers'
 
 export const addTodoInEvent = ({
   element,
@@ -8,7 +8,10 @@ export const addTodoInEvent = ({
   todos,
   component
 }: IAddTodoInEvent) => {
-  addTodo({ element, newTodo })
+  addTodo({
+    element,
+    newTodo
+  })
 
   return todos.length && (component.style.display = 'flex')
 }

@@ -1,13 +1,13 @@
-import { IEvent, IGetElement } from "interfaces"
+import { IEvent, IGetElement } from 'interfaces'
 
-export const getElement = ({ e }: IEvent): IGetElement => {
+export const getElement = ({ e }: IEvent): IGetElement | null => {
   const TARGET = e.target as HTMLInputElement
   const ELEMENT_LI = TARGET.offsetParent as HTMLElement
   const ID = ELEMENT_LI.getAttribute('data-id')
   const IMG = TARGET.getAttribute('alt')
   const IS_CHECKED = TARGET.checked
 
-  if (!ID) return
+  if (!ID) return null
 
   return {
     id: ID,

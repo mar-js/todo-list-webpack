@@ -1,5 +1,5 @@
 // BOOTSTRAP
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 // JS
 import { TodoList } from 'classes'
@@ -9,9 +9,9 @@ import {
   deleteTodo,
   deleteAllTodo,
   addTodoInEvent
-} from 'helpers';
+} from 'helpers'
 
-import { Container } from 'components';
+import { Container } from 'components'
 
 const INPUT = document.getElementById('taskText') as HTMLInputElement
 const SEND = document.getElementById('send') as HTMLButtonElement
@@ -22,14 +22,17 @@ const {
   isCompleted,
   removeTodo,
   removeAllTodo
-} = new TodoList()
+} =
+  new TodoList()
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!todos.length) CONTAINER_TRASH_BIG.style.display = 'none'
 
-  CONTAINER_TRASH_BIG.addEventListener('click', () => deleteAllTodo({ removeAllTodo }))
+  CONTAINER_TRASH_BIG.addEventListener('click', () =>
+    deleteAllTodo({ removeAllTodo })
+  )
 
-  INPUT.addEventListener('keyup', e => {
+  INPUT.addEventListener('keyup', (e) => {
     const VALUE = e.target as unknown as HTMLInputElement
     const KEY = e.key
 
@@ -56,8 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  Container.addEventListener('click', e => {
-    deleteTodo({ e, removeTodo })
-    isComplete({ e, isCompleted })
+  Container.addEventListener('click', (e) => {
+    deleteTodo({
+      e,
+      removeTodo
+    })
+    isComplete({
+      e,
+      isCompleted
+    })
   })
 })

@@ -1,6 +1,6 @@
-import { IEvent } from "interfaces"
+import { IEvent } from 'interfaces'
 
-import { getElement } from "helpers"
+import { getElement } from 'helpers'
 
 export const isComplete = ({ e, isCompleted }: IEvent) => {
   const {
