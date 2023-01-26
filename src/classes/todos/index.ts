@@ -12,7 +12,7 @@ export class Todos {
   }
 
   removeTodo(id: string) {
-    this.todos = [ ...this.todos.filter(todo => todo.id !== id) ]
+    this.todos = [ ...this.todos.filter((todo: ITodo) => todo.id !== id) ]
   }
 
   isCompleted(id: string) {

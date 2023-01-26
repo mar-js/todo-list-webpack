@@ -18,18 +18,16 @@ const SEND = document.getElementById('send') as HTMLButtonElement
 const CONTAINER_TRASH_BIG = document.getElementById('containerTrashBig')
 const {
   todos,
-  newTodo,
-  isCompleted,
+  removeAllTodo,
   removeTodo,
-  removeAllTodo
+  newTodo,
+  isCompleted
 } = new Todos()
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!todos.length) CONTAINER_TRASH_BIG.style.display = 'none'
 
-  CONTAINER_TRASH_BIG.addEventListener('click', () =>
-    deleteAllTodo({ removeAllTodo })
-  )
+  CONTAINER_TRASH_BIG.addEventListener('click', () => deleteAllTodo({ removeAllTodo }))
 
   INPUT.addEventListener('keyup', (e) => {
     const VALUE = e.target as unknown as HTMLInputElement
@@ -63,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e,
       removeTodo
     })
+
     isComplete({
       e,
       isCompleted
