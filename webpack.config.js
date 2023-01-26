@@ -1,10 +1,10 @@
-import { Configuration } from 'webpack'
-import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const CONFIG: Configuration = {
-  entry: './src/index.ts',
+module.exports = {
+  entry: 'src/index.ts',
   mode: 'development',
   output: {
     clean: true,
@@ -30,12 +30,21 @@ const CONFIG: Configuration = {
         exclude: /node_modules/
       },
       {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: { presets: [ '@babel/preset-env' ] }
+        }
+      },
+      {
         test: /\.(png|jpe?g|gif)$/,
         loader: 'file-loader'
       }
     ]
   },
   resolve: {
+    modules: [ path.resolve(__dirname, 'src'), 'node_modules' ],
     extensions: [ '.ts', '.js' ],
     preferRelative: true
   },
@@ -55,5 +64,3 @@ const CONFIG: Configuration = {
     })
   ]
 }
-
-export default CONFIG

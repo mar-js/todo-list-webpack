@@ -1,10 +1,10 @@
-import { Configuration } from 'webpack'
-import TerserWebpackPlugin from 'terser-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const CONFIG: Configuration = {
-  entry: './src/index.ts',
+module.exports = {
+  entry: 'src/index.ts',
   mode: 'production',
   output: {
     clean: true,
@@ -27,6 +27,11 @@ const CONFIG: Configuration = {
         loader: 'file-loader'
       },
       {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
@@ -37,6 +42,7 @@ const CONFIG: Configuration = {
     ]
   },
   resolve: {
+    modules: [ path.resolve(__dirname, 'src'), 'node_modules' ],
     extensions: [ '.ts', '.js' ],
     preferRelative: true
   },
@@ -47,7 +53,7 @@ const CONFIG: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Todo List Webpack',
-      // filename: 'index.html',
+      filename: 'index.html',
       template: 'src/index.html'
     }),
     new CopyWebpackPlugin({
@@ -60,5 +66,3 @@ const CONFIG: Configuration = {
     })
   ]
 }
-
-export default CONFIG

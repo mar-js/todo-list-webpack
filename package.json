@@ -1,14 +1,13 @@
 {
   "name": "todo-list-webpack",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.ts",
-    "build:dev": "webpack --config webpack.config.ts",
-    "start": "webpack serve --config webpack.config.ts --open --port=8080"
+    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js --open --port=8080"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +18,6 @@
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "babel-loader": "^8.2.3",
-    "bootstrap": "^5.1.3",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.32.0",
@@ -38,5 +36,8 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
   }
 }
