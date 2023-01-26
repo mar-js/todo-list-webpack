@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // JS
-import { TodoList } from 'classes'
+import { Todos } from 'classes'
 
 import {
   isComplete,
@@ -22,8 +22,7 @@ const {
   isCompleted,
   removeTodo,
   removeAllTodo
-} =
-  new TodoList()
+} = new Todos()
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!todos.length) CONTAINER_TRASH_BIG.style.display = 'none'

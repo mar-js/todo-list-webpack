@@ -1,2 +1,2 @@
 export { Todo } from './todo'
-export { TodoList } from './todo-list'
+export { Todos } from './todos'

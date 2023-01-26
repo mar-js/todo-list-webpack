@@ -5,7 +5,7 @@ export interface ITodo {
   isCompleted: boolean;
 }
 
-export interface ITodoList {
+export interface ITodos {
   todos?: ITodo[] | [];
   newTodo?: (todo: ITodo) => void;
   isCompleted?: (id: string) => void;
@@ -13,11 +13,11 @@ export interface ITodoList {
   removeAllTodo?: () => void;
 }
 
-export interface IAddTodo extends ITodoList {
+export interface IAddTodo extends ITodos {
   element: HTMLInputElement;
 }
 
-export interface IEvent extends ITodoList {
+export interface IEvent extends ITodos {
   e: MouseEvent | KeyboardEvent;
 }
 

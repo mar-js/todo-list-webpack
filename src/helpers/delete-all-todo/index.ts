@@ -1,8 +1,8 @@
-import { ITodoList } from 'interfaces'
+import { ITodos } from 'interfaces'
 
 import { Container } from 'components'
 
-export const deleteAllTodo = ({ removeAllTodo }: ITodoList) => {
+export const deleteAllTodo = ({ removeAllTodo }: ITodos) => {
   removeAllTodo()
 
   Container.remove()

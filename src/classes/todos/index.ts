@@ -1,6 +1,6 @@
 import { ITodo } from 'interfaces'
 
-export class TodoList {
+export class Todos {
   todos: ITodo[] | []
 
   constructor() {
