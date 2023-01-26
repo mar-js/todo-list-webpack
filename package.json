@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.js",
-    "build:dev": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.js --open --port=8080"
+    "build": "webpack --config webpack.prod.ts",
+    "build:dev": "webpack --config webpack.config.ts",
+    "start": "webpack serve --config webpack.config.ts --open --port=8080"
   },
   "keywords": [],
   "author": "",

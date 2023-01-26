@@ -1,8 +1,9 @@
+import { Configuration } from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-module.exports = {
+const CONFIG: Configuration = {
   entry: './src/index.ts',
   mode: 'development',
   output: {
@@ -54,3 +55,5 @@ module.exports = {
     })
   ]
 }
+
+export default CONFIG

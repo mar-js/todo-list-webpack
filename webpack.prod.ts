@@ -1,9 +1,9 @@
-import path from 'path'
+import { Configuration } from 'webpack'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-module.exports = {
+const CONFIG: Configuration = {
   entry: './src/index.ts',
   mode: 'production',
   output: {
@@ -40,11 +40,6 @@ module.exports = {
     extensions: [ '.ts', '.js' ],
     preferRelative: true
   },
-  devServer: {
-    static: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 4000
-  },
   optimization: {
     minimize: true,
     minimizer: [ new TerserWebpackPlugin() ]
@@ -65,3 +60,5 @@ module.exports = {
     })
   ]
 }
+
+export default CONFIG
