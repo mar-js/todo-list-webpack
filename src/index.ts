@@ -1,70 +1,38 @@
 // BOOTSTRAP
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-// JS
-import { Todos } from 'classes'
+import { Tasks } from 'classes'
 
-import {
-  isComplete,
-  deleteTodo,
-  deleteAllTodo,
-  addTodoInEvent
-} from 'helpers'
+import { addTask, handleChange } from 'helpers'
 
 import { Container } from 'components'
 
-const INPUT = document.getElementById('taskText') as HTMLInputElement
-const SEND = document.getElementById('send') as HTMLButtonElement
-const CONTAINER_TRASH_BIG = document.getElementById('containerTrashBig')
-const {
-  todos,
-  removeAllTodo,
-  removeTodo,
-  newTodo,
-  isCompleted
-} = new Todos()
+const INPUT = document.getElementById('task') as HTMLInputElement
+const SEND = document.getElementById('send')
+const TASKS = new Tasks()
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!todos.length) CONTAINER_TRASH_BIG.style.display = 'none'
-
-  CONTAINER_TRASH_BIG.addEventListener('click', () => deleteAllTodo({ removeAllTodo }))
-
-  INPUT.addEventListener('keyup', (e) => {
-    const VALUE = e.target as unknown as HTMLInputElement
-    const KEY = e.key
-
-    if (!VALUE) return
-
-    if (KEY === 'Enter') {
-      addTodoInEvent({
-        element: INPUT,
-        newTodo,
-        todos,
-        component: CONTAINER_TRASH_BIG
-      })
-    }
-  })
-
-  SEND.addEventListener('click', () => {
-    if (!INPUT.value) return
-
-    addTodoInEvent({
-      element: INPUT,
-      newTodo,
-      todos,
-      component: CONTAINER_TRASH_BIG
+  Container.addEventListener('click', function(e) {
+    handleChange({
+      e,
+      element: this,
+      inst: TASKS
     })
   })
 
-  Container.addEventListener('click', (e) => {
-    deleteTodo({
+  INPUT.addEventListener('keyup', function(e) {
+    addTask({
       e,
-      removeTodo
+      input: this,
+      inst: TASKS
     })
+  })
 
-    isComplete({
+  SEND.addEventListener('click', function(e) {
+    addTask({
       e,
-      isCompleted
+      input: INPUT,
+      inst: TASKS
     })
   })
 })
