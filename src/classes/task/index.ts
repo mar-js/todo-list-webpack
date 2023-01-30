@@ -1,4 +1,4 @@
-export class Todo {
+export class Task {
   created: string
   id: string
   task: string
