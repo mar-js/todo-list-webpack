@@ -1,33 +1,25 @@
-export interface ITodo {
+export interface ITask {
   created: string;
   id: string;
   task: string;
   isCompleted: boolean;
 }
 
-export interface ITodos {
-  todos?: ITodo[] | [];
-  newTodo?: (todo: ITodo) => void;
+export interface ITasks {
+  tasks?: ITask[] | [];
+  newTask?: (task: ITask) => void;
   isCompleted?: (id: string) => void;
-  removeTodo?: (id: string) => void;
-  removeAllTodo?: () => void;
+  removeTask?: (id: string) => void;
+  removeAllTask?: () => void;
 }
 
-export interface IAddTodo extends ITodos {
-  element: HTMLInputElement;
+export interface IEvent {
+  e: KeyboardEvent | MouseEvent | PointerEvent;
+
 }
 
-export interface IEvent extends ITodos {
-  e: MouseEvent | KeyboardEvent;
-}
-
-export interface IAddTodoInEvent extends IAddTodo {
-  component: HTMLElement;
-}
-
-export interface IGetElement {
-  id: string;
-  img: string;
-  isChecked: boolean;
-  elementLi: HTMLElement;
+export interface IHandleEvents extends IEvent {
+  input?: HTMLInputElement;
+  element?: HTMLElement;
+  inst: ITasks
 }
