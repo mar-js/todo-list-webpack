@@ -14,7 +14,7 @@ export interface ITasks {
 }
 
 export interface IEvent {
-  e: KeyboardEvent | MouseEvent | PointerEvent;
+  e?: KeyboardEvent | MouseEvent | PointerEvent;
 
 }
 
