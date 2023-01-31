@@ -7,9 +7,9 @@ import { List } from 'components'
 export const addTask = ({
   e,
   input,
-  inst
+  inst,
+  element
 }: IHandleEvents) => {
-  const TRASH = document.getElementById('trash')
   const { value } = input
 
   if (!value) return
@@ -22,5 +22,5 @@ export const addTask = ({
 
   inst.newTask(TASK)
 
-  if (inst.tasks.length > 1) TRASH.style.cssText = 'display: inline-block !important'
+  if (inst.tasks.length > 1) element.style.cssText = 'display: inline-block !important'
 }
