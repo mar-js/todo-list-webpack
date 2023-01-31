@@ -3,20 +3,25 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Tasks } from 'classes'
 
-import { addTask, handleChange } from 'helpers'
+import {
+  addTask,
+  deleteAllTask,
+  handleChange
+} from 'helpers'
 
 import { Container } from 'components'
 
 const INPUT = document.getElementById('task') as HTMLInputElement
 const SEND = document.getElementById('send')
+const TRASH = document.getElementById('trash') as HTMLImageElement
 const TASKS = new Tasks()
 
 document.addEventListener('DOMContentLoaded', () => {
-  Container.addEventListener('click', function(e) {
-    handleChange({
+  TRASH.addEventListener('click', function(e) {
+    deleteAllTask({
       e,
-      element: this,
-      inst: TASKS
+      inst: TASKS,
+      element: Container
     })
   })
 
@@ -24,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addTask({
       e,
       input: this,
-      inst: TASKS
+      inst: TASKS,
+      element: TRASH
     })
   })
 
@@ -32,6 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
     addTask({
       e,
       input: INPUT,
+      inst: TASKS,
+      element: TRASH
+    })
+  })
+
+  Container.addEventListener('click', function(e) {
+    handleChange({
+      e,
+      element: this,
       inst: TASKS
     })
   })
